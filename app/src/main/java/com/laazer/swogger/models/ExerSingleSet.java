@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Laazer.
  */
-public class ExcerSingleSet implements ExcerSet {
+public class ExerSingleSet implements ExerSet {
     private String name;
     private short repGoal;
     private short repActual;
@@ -14,8 +14,8 @@ public class ExcerSingleSet implements ExcerSet {
     private boolean isFailureSet;
     private List<String> tags;
 
-    public ExcerSingleSet(String name, short repGoal, short repActual,
-                          short weight, boolean isFailureSet, List<String> tags) {
+    public ExerSingleSet(String name, short repGoal, short repActual,
+                         short weight, boolean isFailureSet, List<String> tags) {
         this.name = name;
         this.repGoal = repGoal;
         this.repActual = repActual;
@@ -24,7 +24,7 @@ public class ExcerSingleSet implements ExcerSet {
         this.tags = tags;
     }
 
-    public ExcerSingleSet(String name, short repGoal, short weight) {
+    public ExerSingleSet(String name, short repGoal, short weight) {
         this(name, repGoal, (short)0, weight, false, new ArrayList<String>());
     }
 

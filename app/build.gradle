@@ -50,3 +50,5 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.github.laazer:commons:1.0-ALPHA'
 }
+
+apply plugin: 'realm-android'
