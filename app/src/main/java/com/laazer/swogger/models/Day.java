@@ -6,9 +6,12 @@ import java.util.List;
  * Created by Dexter on 11/9/2016.
  */
 public class Day {
-    private short day;
-    private short month;
-    private short year;
+    private SmallDate date;
     private List<Exercise> workout;
+
+
+    public void Exercise(Exercise exercise) {
+        workout.add(exercise);
+    }
 }
 
