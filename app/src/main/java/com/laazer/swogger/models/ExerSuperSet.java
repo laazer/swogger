@@ -3,6 +3,7 @@ package com.laazer.swogger.models;
 import java.util.ArrayList;
 import java.util.List;
 import com.laazer.common.collections.CollectionUtils;
+import com.laazer.common.collections.ListUtils;
 import com.laazer.common.functions.Function;
 import com.laazer.common.functions.Functions;
 
@@ -20,7 +21,15 @@ public class ExerSuperSet implements ExerSet {
 
     @Override
     public List<String> getTags() {
-        return CollectionUtils.fold(new ArrayList<String>(), Functions.toBinFunction(new AppendTags()),
+        Function<ExerSet, List<String>> toStringList = new Functions.AFunction<ExerSet, List<String>>() {
+            @Override
+            public List<String> apply(ExerSet exerSet) {
+                return exerSet.getTags();
+            }
+        };
+        Function<List<String>, Function<ExerSet, List<String>>> func = Functions.compound(ListUtils.<String>append(), toStringList);
+        return CollectionUtils.fold(new ArrayList<String>(),
+                Functions.toBinFunction(func),
                 this.sets);
     }
 

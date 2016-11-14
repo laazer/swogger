@@ -1,7 +1,7 @@
 package com.laazer.swogger.models;
 
 /**
- * Created by Dexter on 11/9/2016.
+ * Created by Laazer
  */
 public class Schedule {
 }
