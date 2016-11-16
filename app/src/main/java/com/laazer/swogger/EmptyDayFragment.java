@@ -1,4 +1,4 @@
-package com.laazer.swogger.utils;
+package com.laazer.swogger;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.laazer.swogger.R;
 
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
@@ -71,23 +69,6 @@ public class EmptyDayFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
     }
 
     /**

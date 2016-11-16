@@ -2,7 +2,8 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.laazer.swogger.utils.EmptyDayFragment">
+             android:layout_gravity="bottom"
+             tools:context=".EmptyDayFragment">
 
     <TextView
             android:text="No workout schedule today :("
@@ -11,7 +12,10 @@
 
     <LinearLayout
             android:id="@+id/empty_activity_buttons"
-            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent">
         <android.support.design.widget.FloatingActionButton
                 android:id="@+id/add"
@@ -19,24 +23,30 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/fab_margin"
-                android:src="@android:drawable/ic_dialog_email"/>
+                android:src="@android:drawable/ic_input_add"/>
 
         <android.support.design.widget.FloatingActionButton
                 android:id="@+id/copy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/fab_margin"
-                android:src="@android:drawable/ic_dialog_email"/>
+                android:src="@android:drawable/ic_popup_sync"/>
 
         <android.support.design.widget.FloatingActionButton
                 android:id="@+id/rest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                android:src="@android:drawable/ic_lock_silent_mode"/>
+        <android.support.design.widget.FloatingActionButton
+                android:id="@+id/random"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/fab_margin"
                 android:src="@android:drawable/ic_dialog_email"/>
 
     </LinearLayout>
+
 
 </FrameLayout>

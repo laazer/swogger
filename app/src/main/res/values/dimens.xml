@@ -7,6 +7,7 @@
     <!-- Default heights -->
     <dimen name="fragment_margin_top">10dp</dimen>
     <dimen name="fragment_title_size">25sp</dimen>
+    <dimen name="under_action_bar_top_margin">100dp</dimen>
 
     <!-- Day Scroll Bar (dsb) Dimen -->
     <dimen name="dsb_bar_height">25dp</dimen>
