@@ -63,4 +63,11 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+
+    <!-- Non-autogenterated Strings Start Here -->
+    <string name="filler_text">Filler!! Replace This!!</string>
+    <string name="set_title">Set</string>
+    <string name="weight_title">Weight</string>
+    <string name="rep_title">Reps</string>
+
 </resources>

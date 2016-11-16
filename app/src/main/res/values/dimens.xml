@@ -5,9 +5,21 @@
     <dimen name="fab_margin">16dp</dimen>
     
     <!-- Default heights -->
-    
+    <dimen name="fragment_margin_top">10dp</dimen>
+    <dimen name="fragment_title_size">25sp</dimen>
+
     <!-- Day Scroll Bar (dsb) Dimen -->
     <dimen name="dsb_bar_height">25dp</dimen>
     <dimen name="dsb_text_size">20sp</dimen>
     <dimen name="dsb_lr_margin">16dp</dimen>
+
+    <!-- Fragment Single Set (fss) -->
+    <dimen name="fss_grid_title_text_size">20sp</dimen>
+    <dimen name="fss_grid_item_text_size">18sp</dimen>
+    <dimen name="fss_margin_from_edge">10dp</dimen>
+    <dimen name="fss_lg_margin_from_edge">50dp</dimen>
+    <dimen name="fss_lg_margin_top">25dp</dimen>
+    <dimen name="fss_lg_button_wd">100dp</dimen>
+    <dimen name="fss_lg_button_hi">60dp</dimen>
+
 </resources>
