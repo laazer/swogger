@@ -1,23 +1,20 @@
 package com.laazer.swogger.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Laazer
  */
 public class Day {
     private SmallDate date;
-    private List<Exercise> exercises;
+    private Workout workout;
 
     public Day(int day, int month, int year) {
         this.date = new SmallDate(day, month, year);
-        this.exercises = new ArrayList<Exercise>();
+        this.workout = new Workout();
     }
 
     public Day() {
         this.date = SmallDate.getToday();
-        this.exercises = new ArrayList<>();
+        this.workout = new Workout();
     }
 
     @Override
