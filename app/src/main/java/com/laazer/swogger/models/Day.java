@@ -27,7 +27,7 @@ public class Day {
 
     @Override
     public int hashCode() {
-        return date != null ? date.hashCode() * 7 : 0;
+        return date != null ? date.hashCode() * 13 : 0;
     }
 }
 
