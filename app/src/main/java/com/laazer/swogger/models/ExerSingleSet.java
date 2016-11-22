@@ -28,6 +28,10 @@ public class ExerSingleSet implements ExerSet {
         this(name, repGoal, (short)0, weight, false, new ArrayList<String>());
     }
 
+    public ExerSingleSet(String name, short weight) {
+        this(name, (short)-1, (short)0, weight, true, new ArrayList<String>());
+    }
+
     public String getName() {
         return name;
     }
@@ -76,4 +80,33 @@ public class ExerSingleSet implements ExerSet {
     public void setTags(List<String> tags) {
         this.tags = tags;
     }
+
+    public void addTag(String tag) {
+        this.tags.add(tag);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == null) return false;
+        if(o instanceof ExerSingleSet) return ((ExerSingleSet)o).name.equals(this.name);
+        else return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode() * 7;
+    }
+
+    @Override
+    public ExerSet clone() {
+        ExerSingleSet set = new ExerSingleSet(this.name, this.repGoal, this.weight);
+        set.setFailureSet(this.isFailureSet);
+        set.tags = new ArrayList<>();
+        for(String tag : set.tags) {
+            set.tags.add(tag);
+        }
+        return set;
+    }
+
+
 }

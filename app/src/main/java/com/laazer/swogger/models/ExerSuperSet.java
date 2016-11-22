@@ -14,9 +14,9 @@ public class ExerSuperSet implements ExerSet {
     private String name;
     private List<ExerSet> sets;
 
-    public ExerSuperSet(String name, List<ExerSet> sets) {
+    public ExerSuperSet(String name) {
         this.name = name;
-        this.sets = sets;
+        this.sets = new ArrayList<>();
     }
 
     @Override
@@ -33,25 +33,47 @@ public class ExerSuperSet implements ExerSet {
                 this.sets);
     }
 
-    static class AppendTags implements Function<List<String>, Function<ExerSet, List<String>>> {
-
-        public Function<ExerSet, List<String>> apply(List<String> value) {
-            return new Append1(value);
-        }
-
-        private class Append1 implements Function<ExerSet, List<String>> {
-            List<String> x;
-            Append1(List<String> x) {
-                this.x = x;
-            }
-
-            public List<String> apply(ExerSet value) {
-                List<String> result = new ArrayList<>();
-                result.addAll(x); result.addAll(value.getTags());
-                return result;
-            }
-        }
+    public String getName() {
+        return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<ExerSet> getSets() {
+        return sets;
+    }
+
+    public void setSets(List<ExerSet> sets) {
+        this.sets = sets;
+    }
+
+    public void addSet(ExerSet set) {
+        this.sets.add(set);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if(o == null) return false;
+        if(o instanceof ExerSuperSet) return ((ExerSuperSet)o).name.equals(this.name);
+        else return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode() * 31;
+    }
+
+    @Override
+    public ExerSet clone() {
+        ExerSuperSet set = new ExerSuperSet(this.name);
+        set.setSets(new ArrayList<ExerSet>());
+        for (ExerSet s : this.sets) {
+            set.addSet(s.clone());
+        }
+        return set;
+    }
 }
 

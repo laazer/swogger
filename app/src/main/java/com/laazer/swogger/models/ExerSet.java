@@ -3,8 +3,9 @@ package com.laazer.swogger.models;
 import java.util.List;
 
 /**
- * Created by Laazer on 11/10/2016.
+ * Created by Laazer
  */
 public interface ExerSet {
+    public ExerSet clone();
     public List<String> getTags();
 }

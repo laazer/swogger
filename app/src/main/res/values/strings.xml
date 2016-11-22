@@ -69,5 +69,7 @@
     <string name="set_title">Set</string>
     <string name="weight_title">Weight</string>
     <string name="rep_title">Reps</string>
+    <string name="add_exercise">+ Add Exercise</string>
+    <string name="add_set">+ Add Set</string>
 
 </resources>
