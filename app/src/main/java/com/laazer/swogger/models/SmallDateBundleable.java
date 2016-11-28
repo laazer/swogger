@@ -13,6 +13,10 @@ public class SmallDateBundleable implements Bundleable<SmallDate> {
     private static final String MONTH = TITLE + "MONTH";
     private static final String YEAR = TITLE + "YEAR";
 
+    public SmallDateBundleable(Bundle b) {
+        getFromBundle(b);
+    }
+
     public SmallDateBundleable(SmallDate date) {
         this.date = date;
     }

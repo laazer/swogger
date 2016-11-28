@@ -42,7 +42,7 @@ public class BasicSchedule implements Schedule {
         Day d = CollectionUtils.find(Functions.toPredicate(
                 Functions.<Day, Day>equals().toUnaryFunction(new Day(day, month, year))), schedule);
         if (d == null) {
-            d = new Day();
+            d = new Day(day, month, year);
             this.schedule.add(d);
         }
         return d;
@@ -51,5 +51,10 @@ public class BasicSchedule implements Schedule {
     @Override
     public Day getDate(SmallDate date) {
         return getDate(date.getDay(), date.getMonth(), date.getYear());
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return schedule.isEmpty();
     }
 }

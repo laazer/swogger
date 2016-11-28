@@ -8,7 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.laazer.swogger.models.BasicExerDataProvider;
+import com.laazer.swogger.models.BasicSchedule;
 import com.laazer.swogger.models.Day;
+import com.laazer.swogger.models.ExerDataProvider;
+import com.laazer.swogger.models.Schedule;
+import com.laazer.swogger.models.SmallDateBundleable;
 
 
 /**
@@ -53,7 +58,11 @@ public class EmptyDayFragment extends Fragment {
         newWorkoutButton = (Button)rootView.findViewById(R.id.add);
         copyWorkoutButton = (Button)rootView.findViewById(R.id.copy);
         restDayButton = (Button)rootView.findViewById(R.id.rest);
-
+        Schedule schedule = BasicSchedule.getInstance();
+        currentDay = schedule.getDate(new SmallDateBundleable(savedInstanceState).getItem());
+        ExerDataProvider dataProvider = BasicExerDataProvider.getInstance();
+        if(schedule.isEmpty()) copyWorkoutButton.setVisibility(View.GONE);
+        else if(dataProvider.getWorkouts().isEmpty()) copyWorkoutButton.setVisibility(View.GONE);
         // Inflate the layout for this fragment
         return rootView;
     }

@@ -3,7 +3,7 @@ package com.laazer.swogger.models;
 /**
  * Created by Laazer.
  */
-public class ExersSetFactory {
+public class ExerSetFactory {
 
     public final static ExerSet getNonMaxExerset(String name, int weight, int repGoal) {
         return new ExerSingleSet(name, (short)repGoal, (short)weight);
