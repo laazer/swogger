@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.laazer.swogger.models.Day;
+
+
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
  * {@link EmptyDayFragment.OnFragmentInteractionListener} interface to handle interaction events.
@@ -19,7 +22,7 @@ public class EmptyDayFragment extends Fragment {
     private Button newWorkoutButton;
     private Button copyWorkoutButton;
     private Button restDayButton;
-
+    private Day currentDay;
     public EmptyDayFragment() {
         // Required empty public constructor
     }
@@ -50,6 +53,7 @@ public class EmptyDayFragment extends Fragment {
         newWorkoutButton = (Button)rootView.findViewById(R.id.add);
         copyWorkoutButton = (Button)rootView.findViewById(R.id.copy);
         restDayButton = (Button)rootView.findViewById(R.id.rest);
+
         // Inflate the layout for this fragment
         return rootView;
     }

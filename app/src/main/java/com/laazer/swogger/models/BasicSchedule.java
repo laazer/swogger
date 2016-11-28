@@ -10,20 +10,19 @@ import java.util.List;
 /**
  * Created by Laazer.
  */
-public class BasicExerDataProvider implements ExerDataProvider {
-    private ExerDataProvider _instance;
-    private List<Day> schedule;
+public class BasicSchedule implements Schedule {
+    private static Schedule _instance;
+    private static List<Day> schedule;
 
-    private BasicExerDataProvider() {
+    private BasicSchedule() {
         this.schedule = new ArrayList<>();
     }
 
-    @Override
-    public ExerDataProvider getInstance() {
-        if (this._instance == null) {
-            this._instance = new BasicExerDataProvider();
+    public static Schedule getInstance() {
+        if (_instance == null) {
+            _instance = new BasicSchedule();
         }
-        return this._instance;
+        return _instance;
     }
 
     @Override
@@ -47,5 +46,10 @@ public class BasicExerDataProvider implements ExerDataProvider {
             this.schedule.add(d);
         }
         return d;
+    }
+
+    @Override
+    public Day getDate(SmallDate date) {
+        return getDate(date.getDay(), date.getMonth(), date.getYear());
     }
 }

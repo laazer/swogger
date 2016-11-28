@@ -13,6 +13,7 @@ public class ExerSingleSet implements ExerSet {
     private short weight;
     private boolean isFailureSet;
     private List<String> tags;
+    private String comments;
 
     public ExerSingleSet(String name, short repGoal, short repActual,
                          short weight, boolean isFailureSet, List<String> tags) {
@@ -70,6 +71,14 @@ public class ExerSingleSet implements ExerSet {
 
     public void setFailureSet(boolean failureSet) {
         isFailureSet = failureSet;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
     @Override
