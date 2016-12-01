@@ -29,5 +29,17 @@ public class Day {
     public int hashCode() {
         return date != null ? date.hashCode() * 13 : 0;
     }
+
+    public SmallDate getDate() {
+        return date;
+    }
+
+    public Workout getWorkout() {
+        return workout;
+    }
+
+    public void setWorkout(Workout workout) {
+        this.workout = workout;
+    }
 }
 

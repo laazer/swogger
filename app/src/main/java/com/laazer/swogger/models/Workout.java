@@ -39,4 +39,8 @@ public class Workout {
     public List<String> getTags() {
         return null;
     }
+
+    public boolean isEmpty() {
+        return exercises.isEmpty();
+    }
 }

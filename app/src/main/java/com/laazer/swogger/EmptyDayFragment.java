@@ -2,17 +2,16 @@ package com.laazer.swogger;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.design.widget.FloatingActionButton;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-
 import com.laazer.swogger.models.BasicExerDataProvider;
-import com.laazer.swogger.models.BasicSchedule;
 import com.laazer.swogger.models.Day;
 import com.laazer.swogger.models.ExerDataProvider;
 import com.laazer.swogger.models.Schedule;
+import com.laazer.swogger.models.ScheduleFactory;
 import com.laazer.swogger.models.SmallDateBundleable;
 
 
@@ -24,9 +23,9 @@ import com.laazer.swogger.models.SmallDateBundleable;
  */
 public class EmptyDayFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
-    private Button newWorkoutButton;
-    private Button copyWorkoutButton;
-    private Button restDayButton;
+    private FloatingActionButton newWorkoutButton;
+    private FloatingActionButton copyWorkoutButton;
+    private FloatingActionButton restDayButton;
     private Day currentDay;
     public EmptyDayFragment() {
         // Required empty public constructor
@@ -55,11 +54,12 @@ public class EmptyDayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_empty_day, container, false);
-        newWorkoutButton = (Button)rootView.findViewById(R.id.add);
-        copyWorkoutButton = (Button)rootView.findViewById(R.id.copy);
-        restDayButton = (Button)rootView.findViewById(R.id.rest);
-        Schedule schedule = BasicSchedule.getInstance();
-        currentDay = schedule.getDate(new SmallDateBundleable(savedInstanceState).getItem());
+        newWorkoutButton = (FloatingActionButton)rootView.findViewById(R.id.add);
+        copyWorkoutButton = (FloatingActionButton)rootView.findViewById(R.id.copy);
+        restDayButton = (FloatingActionButton)rootView.findViewById(R.id.rest);
+        Schedule schedule = ScheduleFactory.getDefaultSchedule();
+        Bundle args = this.getArguments();
+        currentDay = schedule.getDate(new SmallDateBundleable(args).getItem());
         ExerDataProvider dataProvider = BasicExerDataProvider.getInstance();
         if(schedule.isEmpty()) copyWorkoutButton.setVisibility(View.GONE);
         else if(dataProvider.getWorkouts().isEmpty()) copyWorkoutButton.setVisibility(View.GONE);
