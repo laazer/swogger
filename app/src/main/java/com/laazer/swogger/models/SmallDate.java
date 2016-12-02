@@ -59,9 +59,8 @@ public class SmallDate {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SmallDate smallDate = (SmallDate) o;
-        if (day != smallDate.day) return false;
-        if (month != smallDate.month) return false;
-        return year == smallDate.year;
+        return day == smallDate.day && month == smallDate.month &&
+            year == smallDate.year;
     }
 
     @Override
@@ -70,5 +69,44 @@ public class SmallDate {
         result = 31 * result + (int) month;
         result = 31 * result + (int) year;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(this.getShortMonthString());
+        sb.append(" ");
+        sb.append(this.getDay());
+        sb.append(", ");
+        sb.append(this.getYear());
+        return sb.toString();
+    }
+
+    public String getMonthString() {
+        switch (this.getMonth()) {
+            case 1: return "January";
+            case 2: return "February";
+            case 3: return "March";
+            case 4: return "April";
+            case 5: return "May";
+            case 6: return "June";
+            case 7: return "July";
+            case 8: return "August";
+            case 9: return "September";
+            case 10: return "October";
+            case 11: return "November";
+            case 12: return "December";
+            default: return "Invalid Month";
+        }
+    }
+
+    public String getShortMonthString() {
+        String month = this.getMonthString();
+        if (month.length() <= 4) {
+            return month;
+        }
+        else {
+            return month.substring(0, 3) + ".";
+        }
     }
 }

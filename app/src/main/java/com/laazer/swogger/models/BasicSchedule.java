@@ -13,9 +13,11 @@ import java.util.List;
 public class BasicSchedule implements Schedule {
     private static Schedule _instance;
     private static List<Day> schedule;
+    private static Day today;
 
     private BasicSchedule() {
-        this.schedule = new ArrayList<>();
+        schedule = new ArrayList<>();
+        getToday();
     }
 
     public static Schedule getInstance() {
@@ -32,7 +34,8 @@ public class BasicSchedule implements Schedule {
         Day d = CollectionUtils.find(pred , schedule);
         if (d == null) {
             d = new Day();
-            this.schedule.add(d);
+            schedule.add(d);
+            if(!d.equals(today)) today = d;
         }
         return d;
     }
@@ -51,6 +54,15 @@ public class BasicSchedule implements Schedule {
     @Override
     public Day getDate(SmallDate date) {
         return getDate(date.getDay(), date.getMonth(), date.getYear());
+    }
+
+    @Override
+    public Day getDateByOffset(int i) {
+        SmallDate date = today.getDate();
+        if(0 < date.getDay() + i && date.getDay() + i < 29) {
+            return new Day(date.getDay() + i, date.getMonth(), date.getYear());
+        }
+
     }
 
     @Override

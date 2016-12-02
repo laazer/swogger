@@ -1,5 +1,6 @@
 package com.laazer.swogger.models;
 
+
 /**
  * Created by Laazer
  */
