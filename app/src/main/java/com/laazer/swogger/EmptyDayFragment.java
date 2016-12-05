@@ -1,5 +1,6 @@
 package com.laazer.swogger;
 
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -55,6 +56,18 @@ public class EmptyDayFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_empty_day, container, false);
         newWorkoutButton = (FloatingActionButton)rootView.findViewById(R.id.add);
+        newWorkoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment dayFragment = new NewWorkoutFragment();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, dayFragment);
+                //dayFragment.setArguments(getSmallDateBundle(new Bundle()));
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
         copyWorkoutButton = (FloatingActionButton)rootView.findViewById(R.id.copy);
         restDayButton = (FloatingActionButton)rootView.findViewById(R.id.rest);
         Schedule schedule = ScheduleFactory.getDefaultSchedule();

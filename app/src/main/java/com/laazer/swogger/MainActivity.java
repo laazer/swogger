@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
     private static final String TAG = "MAIN";
     // ...
-    private char topFrag = 0;
     private View rootView;
     private Schedule schedule;
     private Day currentDay;
