@@ -10,7 +10,7 @@
     <dimen name="under_action_bar_top_margin">100dp</dimen>
 
     <!-- Day Scroll Bar (dsb) Dimen -->
-    <dimen name="dsb_bar_height">25dp</dimen>
+    <dimen name="dsb_bar_height">40dp</dimen>
     <dimen name="dsb_text_size">20sp</dimen>
     <dimen name="dsb_lr_margin">16dp</dimen>
 

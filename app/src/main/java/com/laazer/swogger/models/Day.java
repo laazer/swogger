@@ -1,20 +1,22 @@
 package com.laazer.swogger.models;
 
 
+import org.joda.time.DateTime;
+
 /**
  * Created by Laazer
  */
 public class Day {
-    private SmallDate date;
+    private DateTime date;
     private Workout workout;
 
     public Day(int day, int month, int year) {
-        this.date = new SmallDate(day, month, year);
+        this.date = new DateTime(year, month, day, 0, 0, 0);
         this.workout = new Workout();
     }
 
     public Day() {
-        this.date = SmallDate.getToday();
+        this.date = new DateTime();
         this.workout = new Workout();
     }
 
@@ -23,7 +25,8 @@ public class Day {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Day day = (Day) o;
-        return date != null ? date.equals(day.date) : day.date == null;
+        return date.getDayOfYear() == day.getDate().getDayOfYear() &&
+                date.getYear() == day.date.getYear();
     }
 
     @Override
@@ -31,8 +34,18 @@ public class Day {
         return date != null ? date.hashCode() * 13 : 0;
     }
 
-    public SmallDate getDate() {
+    @Override
+    public String toString() {
+        return date.monthOfYear().getAsShortText() + " " + date.getDayOfMonth() + ", " +
+                date.getYear();
+    }
+
+    public DateTime getDate() {
         return date;
+    }
+
+    public SmallDate getSmallDate() {
+        return new SmallDate(date.getDayOfMonth(), date.getMonthOfYear(), date.getYear());
     }
 
     public Workout getWorkout() {

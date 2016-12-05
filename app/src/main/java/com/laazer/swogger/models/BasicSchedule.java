@@ -4,6 +4,8 @@ import com.laazer.common.collections.CollectionUtils;
 import com.laazer.common.functions.Functions;
 import com.laazer.common.functions.Predicate;
 
+import org.joda.time.DateTime;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +33,7 @@ public class BasicSchedule implements Schedule {
     public Day getToday() {
         Predicate<Day> pred =
                 Functions.toPredicate(Functions.<Day, Day>equals().toUnaryFunction(new Day()));
-        Day d = CollectionUtils.find(pred , schedule);
+        Day d = CollectionUtils.find(pred, schedule);
         if (d == null) {
             d = new Day();
             schedule.add(d);
@@ -46,7 +48,7 @@ public class BasicSchedule implements Schedule {
                 Functions.<Day, Day>equals().toUnaryFunction(new Day(day, month, year))), schedule);
         if (d == null) {
             d = new Day(day, month, year);
-            this.schedule.add(d);
+            schedule.add(d);
         }
         return d;
     }
@@ -58,11 +60,9 @@ public class BasicSchedule implements Schedule {
 
     @Override
     public Day getDateByOffset(int i) {
-        SmallDate date = today.getDate();
-        if(0 < date.getDay() + i && date.getDay() + i < 29) {
-            return new Day(date.getDay() + i, date.getMonth(), date.getYear());
-        }
-
+        DateTime dt = new DateTime();
+        dt = dt.plusDays(i);
+        return getDate(dt.getDayOfMonth(), dt.getMonthOfYear(), dt.getYear());
     }
 
     @Override

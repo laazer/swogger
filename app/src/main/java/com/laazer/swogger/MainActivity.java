@@ -9,11 +9,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.laazer.swogger.models.Day;
 import com.laazer.swogger.models.Schedule;
 import com.laazer.swogger.models.ScheduleFactory;
 import com.laazer.swogger.models.SmallDateBundleable;
+import com.laazer.swogger.utils.FontManager;
 
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
 
@@ -23,14 +26,35 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     private View rootView;
     private Schedule schedule;
     private Day currentDay;
-    private Fragment topFragment;
+    private int dayOffset;
+    private FontManager fontManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         schedule = ScheduleFactory.getDefaultSchedule();
         currentDay = schedule.getToday();
+        rootView = findViewById(R.id.activity_main);
+        dayOffset = 0;
         setContentView(R.layout.activity_main);
+        Button nextDay = (Button)findViewById(R.id.next_day_btn);
+        Button prevDay = (Button)findViewById(R.id.prev_day_btn);
+        fontManager = new FontManager(this);
+        fontManager.markAsIconContainer(findViewById(R.id.date_picker), FontManager.FONTAWESOME);
+        nextDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dayOffset++;
+                setDay();
+            }
+        });
+        prevDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dayOffset--;
+                setDay();
+            }
+        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getFragmentManager().addOnBackStackChangedListener(this);
@@ -78,6 +102,17 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     }
 
     private Bundle getSmallDateBundle(Bundle b) {
-        return new SmallDateBundleable(currentDay.getDate()).updateBundle(b);
+        return new SmallDateBundleable(currentDay.getSmallDate()).updateBundle(b);
     }
+
+    private void setDay() {
+        currentDay = schedule.getDateByOffset(dayOffset);
+        TextView tv = (TextView)findViewById(R.id.date_text_view);
+        if (dayOffset == 0) {
+            tv.setText("Today");
+        } else {
+            tv.setText(currentDay.toString());
+        }
+    }
+
 }

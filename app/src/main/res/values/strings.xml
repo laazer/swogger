@@ -71,5 +71,7 @@
     <string name="rep_title">Reps</string>
     <string name="add_exercise">+ Add Exercise</string>
     <string name="add_set">+ Add Set</string>
+    <string name="fa_caret_left">&#xf0d9;</string>
+    <string name="fa_caret_right">&#xf0da;</string>
 
 </resources>
