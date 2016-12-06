@@ -1,0 +1,55 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.laazer.swogger.NewExersiseFragment">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fragment_margin_top"
+                android:layout_gravity="center|top"
+                android:textSize="@dimen/ee_title_text_size"
+                android:hint="@string/exer_name_hint"/>
+        <TextView
+                android:text="@string/sets"
+                android:textSize="@dimen/ee_title_text_size"
+                android:layout_marginTop="@dimen/fss_lg_margin_top"
+                android:layout_marginLeft="@dimen/fss_margin_from_edge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <ListView
+                android:id="@+id/set_list"
+                tools:listitem="@layout/content_simple_string_pair_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <FrameLayout
+            android:id="@+id/button_pair_frame"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="@dimen/fragment_margin_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button
+                android:id="@+id/add_button"
+                android:text="@string/fa_check"
+                android:layout_gravity="left"
+                android:background="@color/positiveGreen"
+                style="@style/BasicButton"
+                android:layout_marginLeft="@dimen/fss_lg_margin_from_edge"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <Button
+                android:id="@+id/remove_button"
+                android:text="@string/fa_x"
+                android:layout_gravity="right"
+                android:background="@color/negRed"
+                style="@style/BasicButton"
+                android:layout_marginRight="@dimen/fss_lg_margin_from_edge"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+</FrameLayout>

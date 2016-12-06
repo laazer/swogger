@@ -4,6 +4,7 @@ import android.app.FragmentTransaction;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.app.FragmentManager;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         setSupportActionBar(toolbar);
         getFragmentManager().addOnBackStackChangedListener(this);
         makeEmptyDayTopFrag();
+        fontManager.destroy();
     }
 
     @Override
@@ -84,7 +86,21 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
     @Override
     public void onBackStackChanged() {
-
+        FragmentManager fm = getFragmentManager();
+        if(fm.getBackStackEntryCount() < 2) {
+            findViewById(R.id.date_picker).setVisibility(View.VISIBLE);
+            View content = findViewById(R.id.content_frame);
+            CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams)content.getLayoutParams();
+            params.topMargin = (int)getResources().getDimension(R.dimen.under_date_picker_top_margin);
+            content.setLayoutParams(params);
+        }
+        else {
+            findViewById(R.id.date_picker).setVisibility(View.GONE);
+            View content = findViewById(R.id.content_frame);
+            CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams)content.getLayoutParams();
+            params.topMargin = (int)getResources().getDimension(R.dimen.under_action_bar_top_margin);
+            content.setLayoutParams(params);
+        }
     }
 
     private void makeEmptyDayTopFrag() {

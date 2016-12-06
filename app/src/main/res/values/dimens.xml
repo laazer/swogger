@@ -7,7 +7,10 @@
     <!-- Default heights -->
     <dimen name="fragment_margin_top">10dp</dimen>
     <dimen name="fragment_title_size">25sp</dimen>
-    <dimen name="under_action_bar_top_margin">100dp</dimen>
+    <dimen name="under_date_picker_top_margin">100dp</dimen>
+    <dimen name="under_action_bar_top_margin">50dp</dimen>
+    <dimen name="basic_list_item_text_size">22sp</dimen>
+    <dimen name="lg_button_text_size">20sp</dimen>
 
     <!-- Day Scroll Bar (dsb) Dimen -->
     <dimen name="dsb_bar_height">40dp</dimen>
@@ -22,5 +25,9 @@
     <dimen name="fss_lg_margin_top">25dp</dimen>
     <dimen name="fss_lg_button_wd">100dp</dimen>
     <dimen name="fss_lg_button_hi">60dp</dimen>
+
+    <!-- Exercise Editor (ee)-->
+    <dimen name="ee_title_text_size">25sp</dimen>
+
 
 </resources>

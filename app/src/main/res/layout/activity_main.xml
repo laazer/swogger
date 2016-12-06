@@ -61,7 +61,7 @@
     <FrameLayout
           android:id="@+id/content_frame"
           android:layout_width="match_parent" android:layout_height="match_parent"
-          android:layout_marginTop="@dimen/under_action_bar_top_margin">
+          android:layout_marginTop="@dimen/under_date_picker_top_margin">
     </FrameLayout>
 
 

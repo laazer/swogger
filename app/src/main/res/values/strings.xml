@@ -71,7 +71,15 @@
     <string name="rep_title">Reps</string>
     <string name="add_exercise">+ Add Exercise</string>
     <string name="add_set">+ Add Set</string>
+    <string name="exer_name_hint">Enter Exercise Name</string>
+    <string name="sets">Sets</string>
+    <string name="ok_label">Ok</string>
+
+    <!-- font awesome-->
     <string name="fa_caret_left">&#xf0d9;</string>
     <string name="fa_caret_right">&#xf0da;</string>
+    <string name="fa_check">&#xf00c;</string>
+    <string name="fa_x">&#xf00d;</string>
+
 
 </resources>
