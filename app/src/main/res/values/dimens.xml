@@ -28,6 +28,7 @@
 
     <!-- Exercise Editor (ee)-->
     <dimen name="ee_title_text_size">25sp</dimen>
+    <dimen name="ee_max_list_size">450dp</dimen>
 
 
 </resources>

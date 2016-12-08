@@ -9,4 +9,5 @@ public interface ExerDataProvider {
 
     public List<Workout> getWorkouts();
     public List<Exercise> getExercises();
+    public List<ExerSet> getSets();
 }

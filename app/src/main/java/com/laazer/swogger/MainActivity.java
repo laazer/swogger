@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getFragmentManager().addOnBackStackChangedListener(this);
-        makeEmptyDayTopFrag();
+        setBottomFragment(getFragmentManager());
         fontManager.destroy();
     }
 
@@ -87,7 +87,9 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     @Override
     public void onBackStackChanged() {
         FragmentManager fm = getFragmentManager();
-        if(fm.getBackStackEntryCount() < 2) {
+        if(fm.getBackStackEntryCount() == 0) {
+            setBottomFragment(fm);
+        } else if(fm.getBackStackEntryCount() < 2) {
             findViewById(R.id.date_picker).setVisibility(View.VISIBLE);
             View content = findViewById(R.id.content_frame);
             CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams)content.getLayoutParams();
@@ -103,16 +105,18 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         }
     }
 
-    private void makeEmptyDayTopFrag() {
+    private void setBottomFragment(FragmentManager fragmentManager) {
         Fragment dayFragment;
         if(currentDay.getWorkout().isEmpty()) {
             dayFragment = new EmptyDayFragment();
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            FragmentTransaction ft = fragmentManager.beginTransaction();
             ft.replace(R.id.content_frame, dayFragment);
             dayFragment.setArguments(getSmallDateBundle(new Bundle()));
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.addToBackStack(null);
             ft.commit();
+        } else {
+            //TODO set
         }
     }
 

@@ -59,7 +59,7 @@ public class EmptyDayFragment extends Fragment {
         newWorkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment dayFragment = new NewWorkoutFragment();
+                Fragment dayFragment = new WorkoutListFragment();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, dayFragment);
                 //dayFragment.setArguments(getSmallDateBundle(new Bundle()));

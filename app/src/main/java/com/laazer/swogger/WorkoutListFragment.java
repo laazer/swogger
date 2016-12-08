@@ -1,8 +1,6 @@
 package com.laazer.swogger;
 
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,11 +17,11 @@ import com.laazer.swogger.models.Workout;
 import com.laazer.swogger.utils.FontManager;
 
 
-public class NewWorkoutFragment extends Fragment {
+public class WorkoutListFragment extends Fragment {
 
     private ExerDataProvider dataProvider;
 
-    public NewWorkoutFragment() {
+    public WorkoutListFragment() {
         // Required empty public constructor
     }
 
@@ -31,10 +29,10 @@ public class NewWorkoutFragment extends Fragment {
      * Use this factory method to create a new instance of this fragment using the provided
      * parameters.
      *
-     * @return A new instance of fragment NewWorkoutFragment.
+     * @return A new instance of fragment WorkoutListFragment.
      */
-    public static NewWorkoutFragment newInstance() {
-        NewWorkoutFragment fragment = new NewWorkoutFragment();
+    public static WorkoutListFragment newInstance() {
+        WorkoutListFragment fragment = new WorkoutListFragment();
         return fragment;
     }
 
@@ -49,7 +47,7 @@ public class NewWorkoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_new_workout, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_simple_list, container, false);
         FontManager fontManager = new FontManager(getActivity());
         fontManager.markAsIconContainer(rootView.findViewById(R.id.button_pair_frame),
                 FontManager.FONTAWESOME);
@@ -58,7 +56,7 @@ public class NewWorkoutFragment extends Fragment {
         addExerciseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new NewExersiseFragment();
+                Fragment fragment = new BasicListFragment(); //TODO set to corect type of list
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, fragment);
                 //dayFragment.setArguments(getSmallDateBundle(new Bundle()));
@@ -67,7 +65,7 @@ public class NewWorkoutFragment extends Fragment {
                 ft.commit();
             }
         });
-        ListView exerList = (ListView)rootView.findViewById(R.id.exercise_list);
+        ListView exerList = (ListView)rootView.findViewById(R.id.basic_list);
         ListAdapter adapter = new ArrayAdapter<Workout>(getActivity(), R.layout.content_simple_string_item, dataProvider.getWorkouts());
         exerList.setAdapter(adapter);
         return rootView;

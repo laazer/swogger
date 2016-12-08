@@ -7,44 +7,43 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
+import com.laazer.common.collections.Box;
 
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
- * {@link NewExersiseFragment.OnFragmentInteractionListener} interface to handle interaction events.
- * Use the {@link NewExersiseFragment#newInstance} factory method to create an instance of this
- * fragment.
+ * {@link BasicListFragment.OnFragmentInteractionListener} interface to handle interaction events. Use
+ * the {@link BasicListFragment#newInstance} factory method to create an instance of this fragment.
  */
-public class NewExersiseFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class BasicListFragment extends Fragment {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    protected String buttonTitle;
+    protected ListAdapter adapter;
+    protected View.OnClickListener onClickListener;
     private OnFragmentInteractionListener mListener;
 
-    public NewExersiseFragment() {
-        // Required empty public constructor
+
+    public BasicListFragment() {}
+
+    protected BasicListFragment(String buttonTitle, ListAdapter adapter, View.OnClickListener listener) {
+        this.buttonTitle = buttonTitle;
+        this.adapter = adapter;
+        this.onClickListener = listener;
     }
 
     /**
      * Use this factory method to create a new instance of this fragment using the provided
      * parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewExersiseFragment.
+     * @return A new instance of fragment BasicListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NewExersiseFragment newInstance(String param1, String param2) {
-        NewExersiseFragment fragment = new NewExersiseFragment();
+    public static BasicListFragment newInstance(String buttonTitle, ListAdapter adapter, View.OnClickListener listener) {
+        BasicListFragment fragment = new BasicListFragment(buttonTitle, adapter, listener);
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,17 +51,19 @@ public class NewExersiseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        if (getArguments() != null) {}
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_exersise, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_simple_list, container, false);
+        Button addButton = (Button)rootView.findViewById(R.id.add_button);
+        addButton.setOnClickListener(this.onClickListener);
+        ListView listView = (ListView)rootView.findViewById(R.id.basic_list);
+        listView.setAdapter(this.adapter);
+        Box<View> viewBox = Box.fill(rootView);
+        return viewBox.getOrElseKeepType(rootView);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
