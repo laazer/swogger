@@ -7,36 +7,31 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-
-import com.laazer.swogger.models.ExerDataProvider;
-import com.laazer.swogger.utils.FontManager;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
- * {@link BasicListFragment.OnFragmentInteractionListener} interface to handle interaction events. Use
- * the {@link BasicListFragment#newInstance} factory method to create an instance of this fragment.
+ * {@link BasicExerEditorFragment.OnFragmentInteractionListener} interface to handle interaction
+ * events. Use the {@link BasicExerEditorFragment#newInstance} factory method to create an instance
+ * of this fragment.
  */
-public class BasicListFragment extends Fragment {
+public class BasicExerEditorFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-
-    public BasicListFragment() {
+    public BasicExerEditorFragment() {
+        // Required empty public constructor
     }
-
 
     /**
      * Use this factory method to create a new instance of this fragment using the provided
      * parameters.
      *
-     * @return A new instance of fragment BasicListFragment.
+     * @return A new instance of fragment BasicExerEditorFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BasicListFragment newInstance() {
-        BasicListFragment fragment = new BasicListFragment();
+    public static BasicExerEditorFragment newInstance() {
+        BasicExerEditorFragment fragment = new BasicExerEditorFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -45,27 +40,17 @@ public class BasicListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {}
+        if (getArguments() != null) {
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_simple_list, container, false);
-        FontManager fontManager = new FontManager(getActivity());
-        fontManager.markAsIconContainer(rootView.findViewById(R.id.button_pair_frame),
-                FontManager.FONTAWESOME);
-        Button addButton = (Button)rootView.findViewById(R.id.add_button);
-        updateTitleButton(addButton);
-        ListView listView = (ListView)rootView.findViewById(R.id.basic_list);
-        updateListAdapter(listView);
+        View rootView = inflater.inflate(R.layout.fragment_basic_editor, container, false);
+
         return rootView;
     }
-
-    protected void updateTitleButton(Button button) {}
-
-    protected void updateListAdapter(ListView view) {}
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

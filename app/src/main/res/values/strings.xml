@@ -70,6 +70,7 @@
     <string name="weight_title">Weight</string>
     <string name="rep_title">Reps</string>
     <string name="add_exercise">+ Add Exercise</string>
+    <string name="add_workout">+ Add Workout</string>
     <string name="add_set">+ Add Set</string>
     <string name="exer_name_hint">Enter Exercise Name</string>
     <string name="sets">Sets</string>
