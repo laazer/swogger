@@ -73,7 +73,9 @@
     <string name="add_workout">+ Add Workout</string>
     <string name="add_set">+ Add Set</string>
     <string name="exer_name_hint">Enter Exercise Name</string>
+    <string name="workout_name_hint">Enter Workout Name</string>
     <string name="sets">Sets</string>
+    <string name="exercises">Exercises</string>
     <string name="ok_label">Ok</string>
 
     <!-- font awesome-->

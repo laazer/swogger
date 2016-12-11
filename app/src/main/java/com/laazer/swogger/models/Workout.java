@@ -1,6 +1,8 @@
 package com.laazer.swogger.models;
 
 import com.laazer.common.collections.ListUtils;
+import com.laazer.common.functions.Functions;
+import com.laazer.swogger.utils.ExerItemUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +10,7 @@ import java.util.List;
 /**
  * Created by Laazer.
  */
-public class Workout {
+public class Workout implements ExerItem {
     private String name;
     private List<Exercise> exercises;
 
@@ -22,6 +24,16 @@ public class Workout {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public List<String> getItems() {
+        return ListUtils.map(this.getExercises(), ExerItemUtils.toString);
+    }
+
+    @Override
+    public void addItem(String name) {
+        //TODO
     }
 
     public List<Exercise> getExercises() {

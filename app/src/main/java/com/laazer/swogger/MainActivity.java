@@ -18,6 +18,7 @@ import com.laazer.swogger.models.Schedule;
 import com.laazer.swogger.models.ScheduleFactory;
 import com.laazer.swogger.models.SmallDateBundleable;
 import com.laazer.swogger.utils.FontManager;
+import com.laazer.swogger.utils.ViewUtils;
 
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
 
@@ -106,15 +107,9 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     }
 
     private void setBottomFragment(FragmentManager fragmentManager) {
-        Fragment dayFragment;
         if(currentDay.getWorkout().isEmpty()) {
-            dayFragment = new EmptyDayFragment();
-            FragmentTransaction ft = fragmentManager.beginTransaction();
-            ft.replace(R.id.content_frame, dayFragment);
-            dayFragment.setArguments(getSmallDateBundle(new Bundle()));
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            ft.addToBackStack(null);
-            ft.commit();
+            ViewUtils.simpleFragmentStart(fragmentManager, R.id.content_frame,
+                    new EmptyDayFragment(), getSmallDateBundle(new Bundle()));
         } else {
             //TODO set
         }

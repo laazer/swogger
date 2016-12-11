@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.laazer.swogger.models.ExerItem;
+import com.laazer.swogger.utils.FontManager;
+
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
  * {@link BasicExerEditorFragment.OnFragmentInteractionListener} interface to handle interaction
@@ -17,6 +20,8 @@ import android.widget.TextView;
  */
 public class BasicExerEditorFragment extends Fragment {
 
+
+    private ExerItem model;
     private OnFragmentInteractionListener mListener;
 
     public BasicExerEditorFragment() {
@@ -29,7 +34,6 @@ public class BasicExerEditorFragment extends Fragment {
      *
      * @return A new instance of fragment BasicExerEditorFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static BasicExerEditorFragment newInstance() {
         BasicExerEditorFragment fragment = new BasicExerEditorFragment();
         Bundle args = new Bundle();
@@ -48,8 +52,20 @@ public class BasicExerEditorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_basic_editor, container, false);
-
+        FontManager fontManager = new FontManager(getActivity());
+        fontManager.markAsIconContainer(rootView.findViewById(R.id.button_pair_frame),
+                FontManager.FONTAWESOME);
         return rootView;
+    }
+
+
+    protected void setNames(View view, String modelTitle, String listTitle, String buttonTitle) {
+        TextView textView = (TextView)view.findViewById(R.id.title_edit_text);
+        textView.setHint(modelTitle);
+        textView = (TextView)view.findViewById(R.id.list_title_text_view);
+        textView.setText(listTitle);
+        textView = (TextView)view.findViewById(R.id.add_button);
+        textView.setText(buttonTitle);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

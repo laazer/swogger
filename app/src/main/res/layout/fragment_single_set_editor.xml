@@ -42,7 +42,7 @@
                 android:text="@string/rep_title"/>
         </FrameLayout>
         <ListView
-            android:id="@+id/set_list"
+            android:id="@+id/item_list_view"
             android:layout_marginLeft="@dimen/fss_margin_from_edge"
             android:layout_marginRight="@dimen/fss_grid_item_text_size"
             android:layout_gravity="bottom"

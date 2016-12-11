@@ -52,9 +52,6 @@ public class BasicListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_simple_list, container, false);
-        FontManager fontManager = new FontManager(getActivity());
-        fontManager.markAsIconContainer(rootView.findViewById(R.id.button_pair_frame),
-                FontManager.FONTAWESOME);
         Button addButton = (Button)rootView.findViewById(R.id.add_button);
         updateTitleButton(addButton);
         ListView listView = (ListView)rootView.findViewById(R.id.basic_list);

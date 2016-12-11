@@ -15,6 +15,7 @@ import com.laazer.swogger.models.ExerDataProvider;
 import com.laazer.swogger.models.ExerDataProviderFactory;
 import com.laazer.swogger.models.Workout;
 import com.laazer.swogger.utils.FontManager;
+import com.laazer.swogger.utils.ViewUtils;
 
 
 public class WorkoutListFragment extends BasicListFragment {
@@ -34,13 +35,8 @@ public class WorkoutListFragment extends BasicListFragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment dayFragment = new WorkoutEditorFragment();
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content_frame, dayFragment);
-                //dayFragment.setArguments(getSmallDateBundle(new Bundle()));
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.addToBackStack(null);
-                ft.commit();
+                ViewUtils.simpleFragmentStart(getFragmentManager(), R.id.content_frame,
+                        new WorkoutEditorFragment());
             }
         });
     }

@@ -1,5 +1,7 @@
 package com.laazer.swogger.models;
 
+import com.laazer.common.collections.ListUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,7 +83,6 @@ public class ExerSingleSet implements ExerSet {
         this.comments = comments;
     }
 
-    @Override
     public List<String> getTags() {
         return tags;
     }
@@ -107,7 +108,7 @@ public class ExerSingleSet implements ExerSet {
     }
 
     @Override
-    public ExerSet clone() {
+    public ExerSingleSet clone() {
         ExerSingleSet set = new ExerSingleSet(this.name, this.repGoal, this.weight);
         set.setFailureSet(this.isFailureSet);
         set.tags = new ArrayList<>();

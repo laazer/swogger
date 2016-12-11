@@ -10,24 +10,27 @@ import com.laazer.common.functions.Functions;
 /**
  * Created by Laazer.
  */
-public class ExerSuperSet implements ExerSet {
+public class ExerSuperSet implements ExerItem, ExerSet {
     private String name;
-    private List<ExerSet> sets;
+    private List<ExerSingleSet> sets;
+
+    public ExerSuperSet() {
+        this("");
+    }
 
     public ExerSuperSet(String name) {
         this.name = name;
         this.sets = new ArrayList<>();
     }
 
-    @Override
     public List<String> getTags() {
-        Function<ExerSet, List<String>> toStringList = new Functions.AFunction<ExerSet, List<String>>() {
+        Function<ExerSingleSet, List<String>> toStringList = new Functions.AFunction<ExerSingleSet, List<String>>() {
             @Override
-            public List<String> apply(ExerSet exerSet) {
+            public List<String> apply(ExerSingleSet exerSet) {
                 return exerSet.getTags();
             }
         };
-        Function<List<String>, Function<ExerSet, List<String>>> func = Functions.compound(ListUtils.<String>append(), toStringList);
+        Function<List<String>, Function<ExerSingleSet, List<String>>> func = Functions.compound(ListUtils.<String>append(), toStringList);
         return CollectionUtils.fold(new ArrayList<String>(),
                 Functions.toBinFunction(func),
                 this.sets);
@@ -41,15 +44,25 @@ public class ExerSuperSet implements ExerSet {
         this.name = name;
     }
 
-    public List<ExerSet> getSets() {
+    @Override
+    public List<String> getItems() {
+        return ListUtils.map(this.getSets(), Functions.<ExerSingleSet>toStringObject());
+    }
+
+    @Override
+    public void addItem(String name) {
+        //TODO get this done
+    }
+
+    public List<ExerSingleSet> getSets() {
         return sets;
     }
 
-    public void setSets(List<ExerSet> sets) {
+    public void setSets(List<ExerSingleSet> sets) {
         this.sets = sets;
     }
 
-    public void addSet(ExerSet set) {
+    public void addSet(ExerSingleSet set) {
         this.sets.add(set);
     }
 
@@ -67,10 +80,10 @@ public class ExerSuperSet implements ExerSet {
     }
 
     @Override
-    public ExerSet clone() {
+    public ExerSuperSet clone() {
         ExerSuperSet set = new ExerSuperSet(this.name);
-        set.setSets(new ArrayList<ExerSet>());
-        for (ExerSet s : this.sets) {
+        set.setSets(new ArrayList<ExerSingleSet>());
+        for (ExerSingleSet s : this.sets) {
             set.addSet(s.clone());
         }
         return set;
