@@ -37,7 +37,7 @@ public class WorkoutListFragment extends BasicListFragment {
             @Override
             public void onClick(View v) {
                 ViewUtils.simpleFragmentStart(getFragmentManager(), R.id.content_frame,
-                        BasicListFragment.newInstance(ExerItemFactory.WORKOUT));
+                        BasicExerEditorFragment.newInstance(ExerItemFactory.WORKOUT));
             }
         });
     }

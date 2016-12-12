@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.laazer.swogger.models.ExerItem;
+import com.laazer.swogger.models.ExerItemFactory;
 import com.laazer.swogger.utils.FontManager;
 
 /**
@@ -22,6 +23,7 @@ public class BasicExerEditorFragment extends Fragment {
 
 
     private ExerItem model;
+    private int state;
     private OnFragmentInteractionListener mListener;
 
     public BasicExerEditorFragment() {
@@ -34,8 +36,10 @@ public class BasicExerEditorFragment extends Fragment {
      *
      * @return A new instance of fragment BasicExerEditorFragment.
      */
-    public static BasicExerEditorFragment newInstance() {
+    public static BasicExerEditorFragment newInstance(int state) {
         BasicExerEditorFragment fragment = new BasicExerEditorFragment();
+        fragment.model = ExerItemFactory.getExerItem(state);
+        fragment.state = state;
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;

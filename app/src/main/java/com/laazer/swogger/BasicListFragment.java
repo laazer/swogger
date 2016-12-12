@@ -23,13 +23,10 @@ import com.laazer.swogger.utils.FontManager;
  */
 public class BasicListFragment extends Fragment {
 
-    private int state;
-    private ExerItem model;
+
     private OnFragmentInteractionListener mListener;
 
     public BasicListFragment() {
-        this.state = 1;
-        this.model = ExerItemFactory.getExerItem(state);
     }
 
 
@@ -40,10 +37,8 @@ public class BasicListFragment extends Fragment {
      * @return A new instance of fragment BasicListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BasicListFragment newInstance(int i) {
+    public static BasicListFragment newInstance() {
         BasicListFragment fragment = new BasicListFragment();
-        fragment.state = i;
-        fragment.model = ExerItemFactory.getExerItem(i);
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
