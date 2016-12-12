@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.laazer.swogger.models.ExerDataProvider;
 import com.laazer.swogger.models.ExerDataProviderFactory;
+import com.laazer.swogger.models.ExerItemFactory;
 import com.laazer.swogger.models.Workout;
 import com.laazer.swogger.utils.FontManager;
 import com.laazer.swogger.utils.ViewUtils;
@@ -36,7 +37,7 @@ public class WorkoutListFragment extends BasicListFragment {
             @Override
             public void onClick(View v) {
                 ViewUtils.simpleFragmentStart(getFragmentManager(), R.id.content_frame,
-                        new WorkoutEditorFragment());
+                        BasicListFragment.newInstance(ExerItemFactory.WORKOUT));
             }
         });
     }
