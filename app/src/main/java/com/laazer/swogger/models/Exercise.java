@@ -1,5 +1,9 @@
 package com.laazer.swogger.models;
 
+import com.laazer.common.collections.ListUtils;
+import com.laazer.common.functions.Functions;
+import com.laazer.swogger.utils.ExerItemUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +16,13 @@ public class Exercise implements ExerItem {
     private int goalReps;
 
     public Exercise() {
-        this("");
+        this.name = "";
+        this.sets = new ArrayList<>();
     }
 
     public Exercise(String name) {
+        this();
         this.name = name;
-        this.sets = new ArrayList<>();
     }
 
     @Override
@@ -32,7 +37,12 @@ public class Exercise implements ExerItem {
 
     @Override
     public List<String> getItems() {
-        return null;
+        return ListUtils.map(this.sets, new Functions.AFunction<ExerSet, String>() {
+            @Override
+            public String apply(ExerSet s) {
+                return s.getName();
+            }
+        });
     }
 
     @Override
